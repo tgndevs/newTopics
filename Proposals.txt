@@ -1,0 +1,9 @@
+Partial Listing:
+
+- HW Boot: Ligh talk 10 minutes for start old Intel Arch32 without  MBR BIOS support. PLOP boot loader.
+- IoT SmartDevices:  IoT based on contactless technologies as Publisher/Subscriber, for ex. Mosquitto(MQTT).
+  PhysicalWeb apps, Industry IoT apps, logistics apps.
+- Linux Containers over Physical embedded plattforms: I/O physical devices, linked to asynchronous processing software containers.
+  Relationships and Dependencies between the I/O/buses and container processing software for changes.
+- Benkmark performance/resource use for Linux Containers classes: quantify performance/resource use management related
+  with internal structure, for different types of Linux Software Containers.

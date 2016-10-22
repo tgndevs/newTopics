@@ -1,0 +1,46 @@
+HW_boot: old plattforms and tools to boot OS's.
+
+- MBR and GPT boot structure.
+  + For hard disks with 512-byte sectors, the MBR partition table entries allow up to a maximum of 2 TiB
+  + MBR-based partition table schemes insert the partitioning information for (usually) four "primary" partitions
+   in the master boot record (MBR) (which on a BIOS system is also the container for code that begins the process of booting
+   the system). In a GPT, the first sector of the disk is reserved for a "protective MBR" such that booting a BIOS-based computer
+   from a GPT disk is supported, but the bootloader and operating system must both be GPT-aware. Regardless of the sector size,
+   the GPT header begins on the second logical block of the device.
+
+- GUID Partition Table (GPT) is a standard for the layout of the partition table on a physical storage device.
+  +  It forms a part of the Unified Extensible Firmware Interface (UEFI) standard (Unified EFI Forum proposed replacement
+    for the PC BIOS), it is also used on some BIOS systems because of the limitations of master boot record (MBR) partition tables,
+    which use 32 bits for storing logical block addresses (LBA) and size information on a traditionally 512 byte disk sector.
+  +  FreeBSD and most Linux distributions can boot from GPT partitions on systems with both legacy BIOS firmware interface and EFI.
+  +  GPT forms a subset of the UEFI specification. GPT allocates 64 bits for logical block addresses,
+    therefore allowing a maximum disk size of 264 sectors. For disks with 512-byte sectors, maximum size is 9.4 ZB.
+    If the minimum size of 16,384 bytes is allocated for the partition entry array, and the default size of 128 bytes.
+  + Like modern MBRs, GPTs use logical block addressing (LBA) in place of the historical cylinder-head-sector (CHS) addressing.
+   The protective MBR is contained in LBA 0, the GPT header is in LBA 1, and the GPT header has a pointer to the partition table,
+   or Partition Entry Array, typically LBA 2. The UEFI specification[4] stipulates that a minimum of 16,384 bytes, regardless
+   of sector size, be allocated for the Partition Entry Array. On a disk having 512-byte sectors, a partition entry array size
+   of 16,384 bytes and the minimum size of 128 bytes for each partition entry, LBA 34 is the first usable sector on the disk.
+  + GPT also provides redundancy, writing the GPT header and partition table both at the beginning and at the end of the disk.
+  
+Demo:
+- Second Instance MBR Boot Manager:
+  + Plop Boot Manager is a small program to boot different operating systems, via MBR without the help/need of a BIOS,
+   will be installed as primary boot manager at boot disk. 
+  + With help of pxelinux it's possible to start the boot manager over the network.
+   You can store the boot manager as option rom in your BIOS, can be used as PCI option ROM in your BIOS.
+  + Programming language: Assembler. Software developer: Elmar Hanlhofer
+  + Features:
+    # USB boot without BIOS support (UHCI, OHCI and EHCI)
+    # PCMCIA CardBus support to enable boot from USB PC-Cards.
+    # Different profiles for operating systems. Define up to 16 partitions. No extra partition for the boot manager.
+    # MBR partition table edit.
+    # Access the whole USB hard disk (up to 2TB) even when the bios has a 128 GiB limit.
+    # Start the network card bootrom from the boot manager to boot from the network.
+  + Snapshots: https://www.plop.at/en/bootmanager/screenshots.html  -> Navigate forward: donate and download.
+  
+
+
+    
+    
+    

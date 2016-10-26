@@ -1,5 +1,7 @@
 HW_boot: old plattforms and tools to boot OS's.
 
+http://sfrias.github.io/slide
+
 - MBR and GPT boot structure.
   + For hard disks with 512-byte sectors, the MBR partition table entries allow up to a maximum of 2 TiB
   + MBR-based partition table schemes insert the partitioning information for (usually) four "primary" partitions
